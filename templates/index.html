@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Chatbot using API key</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Ask the AI</h1>
+      <form method="POST" action="/" class="interactive-form">
+        <div class="input-container">
+          <label for="user_input">What's on your mind?</label>
+          <textarea
+            id="user_input"
+            name="user_input"
+            placeholder="Type your question here..."
+            required
+          ></textarea>
+        </div>
+        <button type="submit">Generate Response</button>
+      </form>
+
+      {% if response %}
+      <div class="response-container">
+        <h2>AI Says:</h2>
+        <p>{{ response }}</p>
+      </div>
+      {% endif %}
+    </div>
+
+    <script>
+      const form = document.querySelector(".interactive-form");
+      form.addEventListener("submit", () => {
+        form.classList.add("loading");
+      });
+    </script>
+  </body>
+</html>
